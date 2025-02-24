@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validação de Formulário</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input {
+            display: block;
+            margin: 10px auto;
+            padding: 8px;
+            width: 200px;
+            border: 2px solid gray;
+            border-radius: 5px;
+        }
+        .erro {
+            border-color: red;
+        }
+        .valido {
+            border-color: lightblue;
+        }
+        #mensagem {
+            color: red;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form id="loginForm">
+        <input type="text" id="usuario" placeholder="Usuário">
+        <input type="password" id="senha" placeholder="Senha">
+        <button type="submit">Entrar</button>
+        <p id="mensagem"></p>
+    </form>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            let usuario = document.getElementById("usuario");
+            let senha = document.getElementById("senha");
+            let mensagem = document.getElementById("mensagem");
+            
+            if (usuario.value.trim() === "" || senha.value.trim() === "") {
+                mensagem.textContent = "Preencha todos os campos!";
+                usuario.classList.add("erro");
+                senha.classList.add("erro");
+                event.preventDefault();
+            } else {
+                mensagem.textContent = "";
+                usuario.classList.remove("erro");
+                senha.classList.remove("erro");
+                usuario.classList.add("valido");
+                senha.classList.add("valido");
+            }
+        });
+    </script>
+</body>
+</html>

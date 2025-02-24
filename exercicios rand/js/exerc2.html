@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contagem Regressiva</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #contador {
+            font-size: 48px;
+            color: orange;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="contador">10</h1>
+    
+    <script>
+        let tempo = 10;
+        let contador = document.getElementById("contador");
+        
+        let intervalo = setInterval(() => {
+            tempo--;
+            contador.textContent = tempo;
+            
+            if (tempo <= 5) {
+                contador.style.color = "red";
+            }
+            
+            if (tempo === 0) {
+                clearInterval(intervalo);
+                contador.textContent = "Tempo acabou!";
+                contador.style.color = "green";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
